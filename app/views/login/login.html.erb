@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag "post.css" %>
+<body>
+  <div class="pt-5">
+    <h1 class="text-center">Log In</h1>
+    <div class="row">
+      <div class = "card col-md-5 mx-auto">
+        <div class="card-body">
+          <%if notice %>
+            <div class="error-msg"> <%= notice %> </div>
+          <% end %>
+          <%= form_with(url: login_path, scope: :session, local: true) do |form| %>
+            <div class="form-group">
+              <%= form.label :email, class: "required" %>
+              <%= form.email_field :email, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= form.label :password , class: "required" %>
+              <%= form.password_field :password, class: 'form-control' %>
+              <p><%= link_to 'Forgot password?', password_reset_path %></p>
+            </div>
+            <div class="form-group pt-1">
+              <button class="btn btn-dark btn-block" type="submit">Log In</button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

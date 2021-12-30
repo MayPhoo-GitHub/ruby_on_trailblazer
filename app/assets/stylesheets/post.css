@@ -1,0 +1,77 @@
+.button,
+.btn-download {
+  border-radius: 10%;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  top: 16%;
+}
+.button {
+  background-color: #3b76b1;
+  padding: 8px;
+  right: 15%;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  box-shadow: 0 8px 16px 0 rgba(36, 23, 153, 0.2),
+    0 6px 20px 0 rgba(59, 50, 184, 0.19);
+}
+.btn-download {
+  background-color: #17aa66;
+  padding: 15px;
+  right: 25%;
+
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  box-shadow: 0 8px 16px 0 rgba(13, 121, 115, 0.2),
+    0 6px 20px 0 rgba(57, 132, 134, 0.19);
+}
+.show-more {
+  color: #b92d39;
+  font-size: 12px;
+}
+
+.header {
+  background-color: #04aa6d;
+  color: #212529;
+  padding: 10px;
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 10px 10px 0 0;
+}
+
+.content {
+  width: 70%;
+  background-color: #a0e0d6;
+  font-size: 16px;
+  padding: 30px;
+  margin: 0 auto;
+  border-radius: 0 0 10px 10px;
+}
+
+.wrapper {
+  width: 20%;
+  margin: 0 auto;
+}
+
+.top {
+  width: 70%;
+  padding-bottom: 20px;
+  margin: 0 auto;
+}
+
+.post-search {
+  width: 20%;
+}
+
+body {
+  background-color: #556d69;
+}
+
+h1,
+.filter {
+  color: #56d4b9;
+}

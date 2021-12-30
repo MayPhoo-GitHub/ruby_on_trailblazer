@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag "post.css" %>
+<body>
+  <div class = "card col-md-5 mx-auto">
+    <h2 class="text-center">Forgot your password ? </h1>
+    <%= form_with url: password_reset_path do |form| %>
+      <%if notice %>
+        <div class="error-msg"> <%= notice %> </div>
+      <% end %>
+      <div class="mb-3">
+        <%= form.label :email, class: "required" %>
+        <%= form.email_field :email, class: 'form-control', :required =>true, placeholder: "Enter your email" %>
+      </div>
+      <div class="mb-3">
+        <%= form.submit "Reset Password", class: "btn btn-dark btn-block"%>
+      </div>
+    <% end %>
+  </div>
+</body>

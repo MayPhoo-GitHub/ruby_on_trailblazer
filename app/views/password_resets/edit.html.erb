@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag "post.css" %>
+<body>
+  <div class="pt-5">
+    <h1 style="text-align: center">Reset Password</h2>
+    <div class="row">
+      <div class = "card col-md-5 mx-auto">
+        <div class="card-body">
+          <%if notice %>
+            <div class="error-msg"> <%= notice %> </div>
+          <% end %>
+          <%= form_with model:@user, url: password_reset_edit_path(token: params[:token]) do |form| %>
+            <div class="form-group">
+              <%= form.label :password , class: "required"%>
+              <%= form.password_field :password, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= form.label :password_confirmation, "Confirm Password" , class: "required"%>
+              <%= form.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+            <%= form.submit class: "btn-alert" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

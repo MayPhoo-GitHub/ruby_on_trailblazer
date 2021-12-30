@@ -1,0 +1,74 @@
+<%= stylesheet_link_tag "post.css" %>
+<body>
+  <%= form_with model: user, url: url, method: method do |form| %>
+    <div class="container">
+      <div class="form-group">
+        <%= form.label :user_name, "User Name", class: "required" %>
+        <%= form.text_field :name, class: "form-control" %>
+        <% if user.errors[:name].any? %>
+          <div class="error-msg">Name <%= user.errors[:name][0] %></div>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= form.label :email, class: "required" %>
+        <%= form.text_field :email, class: "form-control" %>
+        <% if user.errors[:email].any? %>
+          <div class="error-msg">Email <%= user.errors[:email][0] %></div>
+        <% end %>
+      </div>
+      <% if @user.id == nil %>
+        <div class="form-group">
+          <%= form.label :password, class: "required" %>
+          <%= form.password_field :password, class: "form-control" %>
+          <% if user.errors[:password].any? %>
+            <div class="error-msg">Password <%= user.errors[:password][0] %></div>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <%= form.label :password_confirmation, "Confirm Password" , class: "required" %>
+          <%= form.password_field :password_confirmation, class: "form-control" %>
+          <% if user.errors[:password_confirmation].any? %>
+            <div class="error-msg">Confirm Password <%= user.errors[:password_confirmation][0] %></div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= form.label :phone %><br>
+        <%= form.text_field :phone,:required => false, class: "form-control" %>
+        <% if user.errors[:phone].any? %>
+          <div class="error-msg">Phone <%= user.errors[:phone][0] %></div>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= form.label :address %><br>
+        <%= form.text_field :address,:required => false, class: "form-control" %>
+        <% if user.errors[:address].any? %>
+          <div class="error-msg">Address <%= user.errors[:address][0] %></div>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= form.label :birthday %><br>
+        <%= form.date_field :birthday,:required => false, class: "form-control" %>
+        <% if user.errors[:birthday].any? %>
+          <div class="error-msg">Birthday <%= user.errors[:birthday][0] %></div>
+        <% end %>
+      </div>
+      <% if current_user.super_user_flag == true %>
+        <div class="form-group">
+          <%= form.label :super_user_flag, "Create as" , class: "required" %>
+          <div class="form-group form-radio">
+            <%= form.radio_button :super_user_flag, true %>
+            <%= form.label :super_user_flag, "Admin", :value => "true" %>
+            <%= form.radio_button :super_user_flag, false %>
+            <%= form.label :super_user_flag, "User", :value => "false" %>
+          </div>
+          <% if user.errors[:super_user_flag].any? %>
+            <div class="error-msg"> User Type can't be blank </div>
+          <% end %>
+        </div>
+      <% end %>
+      <%= form.submit class: "btn-submit" %>
+      <%= link_to 'Cancel', back  %>
+    </div>
+  <% end %>
+</body>

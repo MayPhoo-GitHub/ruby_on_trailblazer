@@ -1,0 +1,4 @@
+<div class="container">
+  <h2 style="text-align: center">Add User Information</h2>
+  <%= render "form", user: @user, url: new_user_users_path(@user), method: :post, back: users_path %>
+</div>
