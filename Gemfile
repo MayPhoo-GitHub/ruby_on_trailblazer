@@ -5,6 +5,7 @@ ruby '2.6.9'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem "trailblazer-rails"
 # Use mysql2 as the database
 gem 'mysql2'
 gem 'jquery-datatables-rails', '~> 3.4.0'
@@ -25,6 +26,17 @@ gem 'jbuilder', '~> 2.7'
 gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap4'
 gem 'htmlbeautifier'
+gem 'paranoia', '~> 2.2'
+gem 'cells'
+gem 'cells-erb'
+gem 'cells-rails'
+gem 'cells-slim'
+gem "slim-rails"
+gem 'rubocop'
+gem 'slim'
+gem 'trailblazer'
+gem 'reform'
+gem 'reform-rails'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

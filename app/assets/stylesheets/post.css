@@ -10,6 +10,22 @@
   position: absolute;
   top: 16%;
 }
+.btn-container {
+  width: 30%;
+  margin: 0 auto;
+  font-size: 12px;
+  display: inline-block;
+}
+.btn-submit {
+  background-color: #4caf50;
+  color: white;
+  width: 10%;
+  margin: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
 .button {
   background-color: #3b76b1;
   padding: 8px;
@@ -19,6 +35,7 @@
   box-shadow: 0 8px 16px 0 rgba(36, 23, 153, 0.2),
     0 6px 20px 0 rgba(59, 50, 184, 0.19);
 }
+
 .btn-download {
   background-color: #17aa66;
   padding: 15px;
@@ -40,6 +57,7 @@
   padding: 10px;
   width: 70%;
   margin: 0 auto;
+  margin-top: 10px;
   border-radius: 10px 10px 0 0;
 }
 
@@ -50,6 +68,10 @@
   padding: 30px;
   margin: 0 auto;
   border-radius: 0 0 10px 10px;
+}
+h6 {
+  font-size: 12px;
+  color: #274197;
 }
 
 .wrapper {
@@ -67,11 +89,13 @@
   width: 20%;
 }
 
-body {
+.body-container {
   background-color: #556d69;
+  width: 100%;
 }
 
 h1,
 .filter {
   color: #56d4b9;
+  text-align: center;
 }
