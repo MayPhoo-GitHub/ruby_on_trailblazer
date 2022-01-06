@@ -14,6 +14,20 @@
         </li>
   
     </ul>
-    
+     <% if logged_in? %>
+      <ul class="navbar-nav my-sm-0">
+        <li class="nav-item">
+          <div class="dropdown show">
+            <a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.name %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="left:-54px;">
+              <%= link_to "Profile", "/", class:"dropdown-item" %>
+              <%= link_to "Log Out", logout_path , class:"dropdown-item" %>
+            </div>
+          </div>
+        </li>
+      </ul>
+    <% end %>
   </div>
 </nav>

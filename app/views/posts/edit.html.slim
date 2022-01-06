@@ -1,0 +1,3 @@
+.container
+    h2 Edit Post
+    = render "form", post: @form, url: edit_post_path(@form), method: :put, back: post_path

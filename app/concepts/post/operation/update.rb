@@ -1,16 +1,16 @@
 module Post::Operation
-    class Create < Trailblazer::Operation
+    class Update < Trailblazer::Operation
       class Present < Trailblazer::Operation
-        step Model(Post, :new)
+        step Model(Post, :find_by)
         step Contract::Build(constant: Post::Contract::Create)
       end
       step Nested(Present)
-      step :created_user!
+      step :updated_user!
       step Contract::Validate(key: :post)
       step Contract::Persist()
 
-      def created_user!(options, **)
-        options[:params][:post][:created_user_id] = options['current_user'][:id]
+      def updated_user!(options, **)
+        options[:params][:post][:updated_user_id] = options['current_user'][:id]
       end
     end
   end

@@ -10,20 +10,12 @@ module User::Operation
 
     def model!(options, params:, **)
       user = User.find_by(email: params[:user][:email])
-      if user.present?
-        if params[:remember_me]
-          options['remember_me'] = 1
-        end
-        if user && user.authenticate(params[:user][:password])
-          options['user'] = user
-          true
-        else
-          options['email_pwd_fail'] = 'Login fail'
-          false
-        end
+      if user && user.authenticate(params[:user][:password])
+        options['user'] = user
+        true
       else
-        options['user_fail'] = 'Login fail'
-          false
+        options['email_pwd_fail'] = 'Login fail'
+        false
       end
     end
   end

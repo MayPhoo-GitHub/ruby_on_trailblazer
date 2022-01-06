@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :authorized?
   # show all users
   def index
     run User::Operation::Index
@@ -11,6 +12,9 @@ class UsersController < ApplicationController
   def show
     run User::Operation::Show::Present do |result|
       @user = result[:model]
+      run Post::Operation::Filter,user_id: @user.id do |result|
+      @posts = result[:model].paginate(page: params[:page], per_page: 5)
+      end
     end
   end
 
