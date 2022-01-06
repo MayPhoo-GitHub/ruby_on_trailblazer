@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # for posts
   resources :posts do
     collection do
+      get :new_post, to: 'posts#new'
+      post :new_post, to: 'posts#create'
+
     end
     member do
     end
@@ -14,6 +17,8 @@ Rails.application.routes.draw do
   # for users
   resources :users do
     collection do
+      get :new_user, to: 'users#new'
+      post :new_user, to: 'users#create'
     end
     member do
     end

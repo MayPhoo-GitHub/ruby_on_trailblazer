@@ -30,6 +30,7 @@
   background-color: #3b76b1;
   padding: 8px;
   right: 15%;
+  top: 10%;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   box-shadow: 0 8px 16px 0 rgba(36, 23, 153, 0.2),
@@ -77,6 +78,7 @@ h6 {
 .wrapper {
   width: 20%;
   margin: 0 auto;
+  margin-top: 10px;
 }
 
 .top {

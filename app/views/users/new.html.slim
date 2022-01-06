@@ -1,0 +1,3 @@
+.container
+    h2 Create User
+    = render "form", user: @form, url: new_user_users_path(@form), method: :post, back: users_path

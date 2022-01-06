@@ -1,0 +1,32 @@
+.container
+    h2 User Detail
+    .form-group.row
+        label.col-sm-2.col-form-label Name
+        div.col-sm-10
+            label.col-sm-10.col-form-label = @user.name
+    .form-group.row
+        label.col-sm-2.col-form-label Email
+        div.col-sm-10
+            label.col-sm-10.col-form-label = @user.email
+    .form-group.row
+        label.col-sm-2.col-form-label Phone
+        div.col-sm-10
+            label.col-sm-10.col-form-label = @user.phone
+    .form-group.row
+        label.col-sm-2.col-form-label Address
+        div.col-sm-10
+            label.col-sm-10.col-form-label = @user.address
+    .form-group.row
+        label.col-sm-2.col-form-label Birthday
+        div.col-sm-10
+            label.col-sm-10.col-form-label = @user.birthday
+    .form-group.row
+        label.col-sm-2.col-form-label Type
+        div.col-sm-10
+            label.col-sm-10.col-form-label = @user.super_user_flag == true ? "Super User" : "Normal User"
+    == link_to "Edit User", edit_user_path(@user), class: "btn-submit"
+    == link_to "Delete", user_path(@user),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" }, class: "btn-delete"
+    == link_to "Cancel",users_path
+       
