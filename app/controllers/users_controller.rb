@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   # params: user param
   def create
     run User::Operation::Create do |_|
-      return redirect_to users_path
+      return redirect_to users_path,notice: :USER_CREATED
     end
     render :new
   end 
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   # params: user, id
   def update
     run User::Operation::Update do |result|
-      return redirect_to user_path(result[:model])
+      return redirect_to user_path(result[:model]),notice: :USER_UPDATED
     end
     render :edit
   end
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   # params: id
   def destroy
     run User::Operation::Destroy do |_|
-      return redirect_to users_path
+      return redirect_to users_path,notice: :USER_DELETED
     end
   end
 

@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   # params: post param
   def create
     run Post::Operation::Create, current_user: current_user  do |_|
-      return redirect_to posts_path
+      return redirect_to posts_path,notice: :POST_CREATED
     end
     render :new
   end
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
   # params: user, id
   def update
     run Post::Operation::Update,current_user: current_user do |result|
-      return redirect_to post_path(result[:model])
+      return redirect_to post_path(result[:model]),notice: :POST_UPDATED
     end
     render :edit
   end
@@ -65,7 +65,7 @@ class PostsController < ApplicationController
   # params: id
   def destroy
     run Post::Operation::Destroy do |_|
-      return redirect_to posts_path
+      return redirect_to posts_path,notice: :POST_DELETED
     end
   end
 end
