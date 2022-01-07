@@ -101,3 +101,9 @@ h1,
   color: #56d4b9;
   text-align: center;
 }
+
+.no-access {
+  margin-top: 30px;
+  text-align: center;
+  color:#b92d39;
+}

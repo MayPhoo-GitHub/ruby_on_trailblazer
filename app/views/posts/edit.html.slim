@@ -1,3 +1,8 @@
-.container
-    h2 Edit Post
-    = render "form", post: @form, url: edit_post_path(@form), method: :put, back: post_path
+- if can_edit(@post)
+    .container
+        h2 Edit Post
+        = render "form", post: @form, url: edit_post_path(@form), method: :put, back: post_path
+
+- else
+    .no-access
+        h2 You have no access to edit this post

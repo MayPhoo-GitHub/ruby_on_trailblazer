@@ -25,11 +25,12 @@
           label.col-sm-2.col-form-label Type
           div.col-sm-10
               label.col-sm-10.col-form-label = @user.super_user_flag == true ? "Super User" : "Normal User"
-      == link_to "Edit User", edit_user_path(@user), class: "btn-submit"
-      == link_to "Delete", user_path(@user),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" }, class: "btn-delete"
-      == link_to "Cancel",users_path
+      - if current_user.super_user_flag == true
+            == link_to "Edit User", edit_user_path(@user), class: "btn-submit"
+            == link_to "Delete", user_path(@user),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" }, class: "btn-delete"
+      == link_to "Back",users_path
 
   h1 Uploaded Posts
   - if @posts

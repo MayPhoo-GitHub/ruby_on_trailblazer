@@ -8,10 +8,14 @@ class PostsController < ApplicationController
     @posts = result[:model].paginate(page: params[:page], per_page: 5)
   end
 
+  # function: filter
+  # show filter post
+  # params: id
   def filter
     run Post::Operation::Filter(user_id: user[:id])
     @posts = result[:model].paginate(page: params[:page], per_page: 5)
   end
+
   # function: show
   # show post detail
   # params: id
@@ -41,7 +45,9 @@ class PostsController < ApplicationController
   # show post edit form
   # params: id
   def edit
-    run Post::Operation::Update::Present 
+    run Post::Operation::Update::Present do |result|
+      @post = result[:model]
+    end
   end
 
   # function: update
