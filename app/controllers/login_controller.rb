@@ -25,4 +25,6 @@ class LoginController < ApplicationController
     @current_user = nil
     redirect_to login_path
   end 
+
+
 end

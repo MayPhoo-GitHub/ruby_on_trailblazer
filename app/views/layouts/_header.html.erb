@@ -22,7 +22,7 @@
               <%= current_user.name %>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="left:-54px;">
-              <%= link_to "Profile", "/", class:"dropdown-item" %>
+              <%= link_to "Profile", profile_users_path , class:"dropdown-item" %>
               <%= link_to "Log Out", logout_path , class:"dropdown-item" %>
             </div>
           </div>

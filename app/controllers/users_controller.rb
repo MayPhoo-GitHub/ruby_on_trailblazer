@@ -60,4 +60,40 @@ class UsersController < ApplicationController
     end
   end
 
+  # function: profile
+  # show user profile
+  def profile
+    @user=current_user
+  end
+
+  # function: edit profile
+  # show profile edit  page
+  def edit_profile
+    run User::Operation::UpdateProfile::Present, user_id: current_user.id
+  end
+
+  # function: update profile
+  # update user profile
+  # params: user
+  def update_profile
+    run User::Operation::UpdateProfile, user_id: current_user.id do |_|
+      return redirect_to profile_users_path, notice: :PROFILE_UPDATED
+    end
+    render :edit_profile
+  end
+
+  # function: edit_password
+  # show password edit page
+  def edit_password
+    run User::Operation::UpdatePassword::Present, user_id: current_user.id
+  end
+
+  # function: update_password
+  # update password
+  def update_password
+    run User::Operation::UpdatePassword, user_id: current_user.id do |_|
+      return redirect_to profile_users_path
+    end
+    render :edit_password
+  end
 end

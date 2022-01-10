@@ -1,0 +1,3 @@
+.container
+    h2 Edit User
+    = render "form", user: @form, url: edit_profile_users_path(@form), method: :put, back: users_path

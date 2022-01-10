@@ -10,11 +10,11 @@
                         - if @form.errors[:email].any?
                             .error-msg This  #{ @form.errors[:email][0] }
                     .form-group
-                        = f.label :password, class: "d-flex flex-row align-items-center required"
+                        = f.label :password, class: "required"
                         = f.password_field :password, class: 'form-control'
                         - if @form.errors[:password].any?
                             .error-msg This  #{ @form.errors[:password][0] }
                         br
-                        = link_to "Forget?", "/" , class: "ml-auto border-link small-xl"
+
                     .form-group.pt-1
                         = f.submit "Log In", class: "btn btn-dark btn-block" 
