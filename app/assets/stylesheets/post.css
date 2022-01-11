@@ -27,9 +27,9 @@
   text-decoration: none;
 }
 .button {
-  background-color: #0716e2;
+  background-color:  #3d61d9;
   padding: 8px;
-  right: 20%;
+  right: 13%;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   box-shadow: 0 8px 16px 0 rgba(36, 23, 153, 0.2),
@@ -81,7 +81,7 @@ h6 {
 }
 
 .top {
-  width: 70%;
+  width: 75%;
   padding-bottom: 20px;
   margin: 0 auto;
 }
@@ -98,6 +98,9 @@ h1,
   text-align: center;
 }
 
+.filter {
+  float: left;
+}
 .no-access {
   margin-top: 30px;
   text-align: center;

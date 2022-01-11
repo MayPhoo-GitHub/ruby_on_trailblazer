@@ -1,0 +1,14 @@
+body
+  .container
+    h3
+      | Upload CSV File
+    br
+    = form_tag import_csv_posts_path, multipart: true do |form|
+      .field.form-group.row
+        .col-sm-4
+          = file_field_tag :file, accept: 'text/csv', class: "form-control"
+          - if @errors
+                .error-msg  #{ @errors[:file][0] }
+      = submit_tag "Upload", class: 'btn-submit'
+      = link_to "Download CSV Format".html_safe, csv_format_posts_path(format: :csv), class: "btn-alert"
+      = link_to 'Cancel', posts_path , class:"btn-delete"

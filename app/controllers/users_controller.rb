@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def show
     run User::Operation::Show::Present do |result|
       @user = result[:model]
-      run Post::Operation::Filter,user_id: @user.id do |result|
+      run Post::Operation::OwnPost,user_id: @user.id do |result|
       @posts = result[:model].paginate(page: params[:page], per_page: 5)
       end
     end
