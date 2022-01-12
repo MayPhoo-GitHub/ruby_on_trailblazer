@@ -6,9 +6,8 @@ module Post::Operation
 
     def import_csv!(options, params:, **)
       begin
-        CSV.foreach(file.path, headers: true, encoding: "iso-8859-1:utf-8", row_sep: :auto, header_converters: :symbol) do |row|
-          Post.create! row.to_hash.merge(created_user_id: current_user_id,
-                                         updated_user_id: current_user_id, created_at: Time.now, updated_at: Time.now)
+        CSV.foreach(params[:file].path, headers: true, encoding:'iso-8859-1:utf-8', row_sep: :auto, header_converters: :symbol) do |row|
+          Post.create! row.to_hash.merge(created_user_id: options['current_user_id'], updated_user_id: options['current_user_id'], created_at: Time.now, updated_at: Time.now)
         end
         return true
       rescue => exception
