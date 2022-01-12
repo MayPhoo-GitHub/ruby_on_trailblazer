@@ -1,0 +1,19 @@
+body
+  .pt-5
+    h1[style="text-align: center"]
+      | Reset Password
+    .row
+      .card.col-md-5.mx-auto
+        .card-body
+          = form_with model: @form, url: password_reset_edit_path(token: params[:token]) do |form|
+            .form-group
+              = form.label :password , class: "required"
+              = form.password_field :password, class: 'form-control'
+                - if @form.errors[:password].any?
+                    .error-msg This  #{@form.errors[:password][0] }
+            .form-group
+              = form.label :password_confirmation, "Confirm Password" , class: "required"
+              = form.password_field :password_confirmation, class: 'form-control'
+                - if @form.errors[:password].any?
+                    .error-msg This  #{ @form.errors[:password][0] }
+            = form.submit class: "btn-alert"

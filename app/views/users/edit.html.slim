@@ -1,7 +1,7 @@
 - if current_user.super_user_flag == true
-    .container
-        h2 Edit User
-        = render "form", user: @form, url: edit_user_path(@form), method: :put, back: user_path
+  .container
+    h2 Edit User
+    = render "form", user: @form, url: edit_user_path(@form), method: :put, back: user_path
 - else
-    .no-access
-        h2 You have no access to edit this user
+  .no-access
+    h2 You have no access to edit this user

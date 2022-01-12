@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :authorized?
   # show all posts
   def index
-    run Post::Operation::Index,current_user: current_user
+    run Post::Operation::Index, current_user: current_user
     @posts = result[:model].paginate(page: params[:page], per_page: 5)
   end
 
@@ -12,9 +12,9 @@ class PostsController < ApplicationController
   # show filter post
   # params: id
   def filter
-    run Post::Operation::Filter, user_id: current_user.id do |result|  
-    @posts = result[:model].paginate(page: params[:page], per_page: 5)
-    render:index
+    run Post::Operation::Filter, user_id: current_user.id do |result|
+      @posts = result[:model].paginate(page: params[:page], per_page: 5)
+      render :index
     end
   end
 
@@ -22,8 +22,8 @@ class PostsController < ApplicationController
   # search post by keyword
   # @return [<Type>] <post>
   def search
-    run Post::Operation::Search,current_user: current_user do |result|  
-      @posts = result[:model].paginate(page: params[:page], per_page: 5)  
+    run Post::Operation::Search, current_user: current_user do |result|
+      @posts = result[:model].paginate(page: params[:page], per_page: 5)
       @last_search_keyword = result[:last_search_keyword]
       render :index
       return
@@ -49,8 +49,8 @@ class PostsController < ApplicationController
   # create post
   # params: post param
   def create
-    run Post::Operation::Create, current_user: current_user  do |_|
-      return redirect_to posts_path,notice: :POST_CREATED
+    run Post::Operation::Create, current_user: current_user do |_|
+      return redirect_to posts_path, notice: :POST_CREATED
     end
     render :new
   end
@@ -68,8 +68,8 @@ class PostsController < ApplicationController
   # update user
   # params: user, id
   def update
-    run Post::Operation::Update,current_user: current_user do |result|
-      return redirect_to post_path(result[:model]),notice: :POST_UPDATED
+    run Post::Operation::Update, current_user: current_user do |result|
+      return redirect_to post_path(result[:model]), notice: :POST_UPDATED
     end
     render :edit
   end
@@ -79,7 +79,7 @@ class PostsController < ApplicationController
   # params: id
   def destroy
     run Post::Operation::Destroy do |_|
-      return redirect_to posts_path,notice: :POST_DELETED
+      return redirect_to posts_path, notice: :POST_DELETED
     end
   end
 
@@ -98,7 +98,6 @@ class PostsController < ApplicationController
       respond_to do |format|
         format.html
         format.csv { send_data result[:csv_data], :filename => "Posts-#{Date.today}.csv" }
-
       end
     end
   end
@@ -108,12 +107,13 @@ class PostsController < ApplicationController
   # @return [<Type>] <description>
   def csv_format
     run Post::Operation::CsvFormat do |result|
-      respond_to do |format| 
+      respond_to do |format|
         format.html
         format.csv { send_data result[:csv_format], :filename => "CSV Format.csv" }
       end
     end
   end
+
   # function import_csv
   # create posts by csv
   # @return [<Type>] <redirect>

@@ -1,19 +1,19 @@
 h1[style="text-align: center"]
   | Post Detail
 h2.header
-          = @post.title
-          - if @post.public_flag == true
-            | 
-            i.fa.fa-globe[style="font-size:24px;"]
-          - else
-            |  
-            i.fa.fa-lock[style="font-size:24px;"]
-          p[style="font-size:12px"]
-            i.fa.fa-calendar
-            = @post.created_at.strftime("%Y/%m/%d " )
-            |  [Posted By: 
-            = @post.user.name
-            | ] 
+  = @post.title
+  - if @post.public_flag == true
+    | 
+    i.fa.fa-globe[style="font-size:24px;"]
+  - else
+    |  
+    i.fa.fa-lock[style="font-size:24px;"]
+  p[style="font-size:12px"]
+    i.fa.fa-calendar
+    = @post.created_at.strftime("%Y/%m/%d " )
+    |  [Posted By: 
+    = @post.user.name
+    | ] 
 .content
   = simple_format(@post.description)
   - if can_edit(@post)

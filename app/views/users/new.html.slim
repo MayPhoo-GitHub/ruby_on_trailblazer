@@ -1,7 +1,7 @@
 - if current_user.super_user_flag == true
-    .container
-        h2 Create User
-        = render "form", user: @form, url: new_user_users_path(@form), method: :post, back: users_path
+  .container
+    h2 Create User
+    = render "form", user: @form, url: new_user_users_path(@form), method: :post, back: users_path
 - else
-    .no-access
-        h2 You have no access to create user
+  .no-access
+    h2 You have no access to create user

@@ -1,23 +1,23 @@
 = form_with model: post, url: url, method: method do |f|
-    .form-group
-        label.required Title
-        = f.text_field :title, class: "form-control"
-        - if post.errors[:title].any?
-            .error-msg This  #{ post.errors[:title][0] }
-    .form-group
-        label.required Description
-        = f.text_area :description, class: "form-control", rows: 6
-        - if post.errors[:description].any?
-            .error-msg This  #{ post.errors[:description][0] }
-    .form-group
-        label.required Privacy
-        br
-        .form-radio
-          =f.radio_button :public_flag, true
-          =f.label :public_flag, "Public", :value => "true"
-          =f.radio_button :public_flag, false
-          =f.label :public_flag, "Private", :value => "false"
-          - if post.errors[:public_flag].any?
-              .error-msg This  #{ post.errors[:public_flag][0] }
-        = f.submit class: "btn-submit"
-        = link_to "Cancel", back, class:"btn-delete"
+  .form-group
+    label.required Title
+    = f.text_field :title, class: "form-control"
+    - if post.errors[:title].any?
+      .error-msg This  #{ post.errors[:title][0] }
+  .form-group
+    label.required Description
+    = f.text_area :description, class: "form-control", rows: 6
+    - if post.errors[:description].any?
+      .error-msg This  #{ post.errors[:description][0] }
+  .form-group
+    label.required Privacy
+    br
+    .form-radio
+      =f.radio_button :public_flag, true
+      =f.label :public_flag, "Public", :value => "true"
+      =f.radio_button :public_flag, false
+      =f.label :public_flag, "Private", :value => "false"
+      - if post.errors[:public_flag].any?
+          .error-msg This  #{ post.errors[:public_flag][0] }
+  = f.submit class: "btn-submit"
+  = link_to "Cancel", back, class:"btn-delete"

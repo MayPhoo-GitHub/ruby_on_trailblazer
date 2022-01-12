@@ -1,46 +1,43 @@
 .body-container
   .container
-      h2 User Detail
-      .form-group.row
-          label.col-sm-2.col-form-label Name
-          div.col-sm-10
-              label.col-sm-10.col-form-label = @user.name
-      .form-group.row
-          label.col-sm-2.col-form-label Email
-          div.col-sm-10
-              label.col-sm-10.col-form-label = @user.email
-      .form-group.row
-          label.col-sm-2.col-form-label Phone
-          div.col-sm-10
-              label.col-sm-10.col-form-label = @user.phone
-      .form-group.row
-          label.col-sm-2.col-form-label Address
-          div.col-sm-10
-              label.col-sm-10.col-form-label = @user.address
-      .form-group.row
-          label.col-sm-2.col-form-label Birthday
-          div.col-sm-10
-              label.col-sm-10.col-form-label = @user.birthday
-      .form-group.row
-          label.col-sm-2.col-form-label Type
-          div.col-sm-10
-              label.col-sm-10.col-form-label = @user.super_user_flag == true ? "Super User" : "Normal User"
-      - if current_user.super_user_flag == true
-            == link_to "Edit User", edit_user_path(@user), class: "btn-submit"
-            == link_to "Delete", user_path(@user),
-                            method: :delete,
-                            data: { confirm: "Are you sure?" }, class: "btn-delete"
-      == link_to "Back",users_path
+    h2 User Detail
+    .form-group.row
+      label.col-sm-2.col-form-label Name
+      div.col-sm-10
+        label.col-sm-10.col-form-label = @user.name
+    .form-group.row
+      label.col-sm-2.col-form-label Email
+      div.col-sm-10
+        label.col-sm-10.col-form-label = @user.email
+    .form-group.row
+      label.col-sm-2.col-form-label Phone
+      div.col-sm-10
+        label.col-sm-10.col-form-label = @user.phone
+    .form-group.row
+      label.col-sm-2.col-form-label Address
+      div.col-sm-10
+        label.col-sm-10.col-form-label = @user.address
+    .form-group.row
+      label.col-sm-2.col-form-label Birthday
+      div.col-sm-10
+        label.col-sm-10.col-form-label = @user.birthday
+    .form-group.row
+      label.col-sm-2.col-form-label Type
+      div.col-sm-10
+        label.col-sm-10.col-form-label = @user.super_user_flag == true ? "Super User" : "Normal User"
+    - if current_user.super_user_flag == true
+        == link_to "Edit User", edit_user_path(@user), class: "btn-submit"
+        == link_to "Delete", user_path(@user),method: :delete,data: { confirm: "Are you sure?" }, class: "btn-delete"
+    == link_to "Back",users_path
 
   h1 Uploaded Posts
   - if @posts
-      - @posts.each do |post|
-          .header
-              h5 #{post.title} #{ post.public_flag == true ? '&nbsp;<i class="fa fa-globe" style="font-size:24px;"></i>'.html_safe : '<i class="fa fa-lock" style="font-size:24px;"></i>'.html_safe}
-              h6 #{post.created_at.strftime("%Y/%m/%d " )} [Posted By: #{ post.user.name }]
-          .content
-              p #{ truncate(post.description.html_safe, length:200)}
-          
-              == link_to "Show More >>",post_path(post),class: "show-more"
+    - @posts.each do |post|
+        .header
+          h5 #{post.title} #{ post.public_flag == true ? '&nbsp;<i class="fa fa-globe" style="font-size:24px;"></i>'.html_safe : '<i class="fa fa-lock" style="font-size:24px;"></i>'.html_safe}
+          h6 #{post.created_at.strftime("%Y/%m/%d " )} [Posted By: #{ post.user.name }]
+        .content
+          p #{ truncate(post.description.html_safe, length:200)}          
+          == link_to "Show More >>",post_path(post),class: "show-more"
   .wrapper
-      = will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
+    = will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer

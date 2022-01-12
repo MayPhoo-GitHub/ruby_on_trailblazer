@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   def show
     run User::Operation::Show::Present do |result|
       @user = result[:model]
-      run Post::Operation::OwnPost,user_id: @user.id do |result|
-      @posts = result[:model].paginate(page: params[:page], per_page: 5)
+      run Post::Operation::OwnPost, user_id: @user.id do |result|
+        @posts = result[:model].paginate(page: params[:page], per_page: 5)
       end
     end
   end
@@ -29,16 +29,16 @@ class UsersController < ApplicationController
   # params: user param
   def create
     run User::Operation::Create do |_|
-      return redirect_to users_path,notice: :USER_CREATED
+      return redirect_to users_path, notice: :USER_CREATED
     end
     render :new
-  end 
+  end
 
   # function: edit
   # show user edit form
   # params: id
   def edit
-    run User::Operation::Update::Present 
+    run User::Operation::Update::Present
   end
 
   # function: update
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   # params: user, id
   def update
     run User::Operation::Update do |result|
-      return redirect_to user_path(result[:model]),notice: :USER_UPDATED
+      return redirect_to user_path(result[:model]), notice: :USER_UPDATED
     end
     render :edit
   end
@@ -56,14 +56,14 @@ class UsersController < ApplicationController
   # params: id
   def destroy
     run User::Operation::Destroy do |_|
-      return redirect_to users_path,notice: :USER_DELETED
+      return redirect_to users_path, notice: :USER_DELETED
     end
   end
 
   # function: profile
   # show user profile
   def profile
-    @user=current_user
+    @user = current_user
   end
 
   # function: edit profile

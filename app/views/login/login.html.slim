@@ -15,6 +15,6 @@
                         - if @form.errors[:password].any?
                             .error-msg This  #{ @form.errors[:password][0] }
                         br
-
+                        = link_to 'Forgot password?', reset_password_path
                     .form-group.pt-1
                         = f.submit "Log In", class: "btn btn-dark btn-block" 

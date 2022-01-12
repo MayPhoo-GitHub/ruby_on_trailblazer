@@ -27,13 +27,15 @@ gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap4'
 gem 'htmlbeautifier'
 gem 'paranoia', '~> 2.2'
-gem 'cells'
+gem "cells"
+gem  "cells-hamlit"
 gem 'cells-erb'
 gem 'cells-rails'
 gem 'cells-slim'
 gem "slim-rails"
 gem 'rubocop'
 gem 'slim'
+gem  "rufo"
 gem 'trailblazer'
 gem 'reform'
 gem 'reform-rails'

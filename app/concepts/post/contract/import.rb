@@ -9,7 +9,7 @@ module Post::Contract
         expected_header = Constants::POST_CSV_FORMAT_HEADER
         input_header = CSV.open(file, "r", encoding: "iso-8859-1:utf-8") { |csv| csv.first }
         error = ""
-        if input_header.size != expected_header.size
+        if input_header != expected_header
           errors.add(:file, Messages::WRONG_HEADER)
         else
           (0..input_header.size - 1).each do |col_name|
@@ -22,4 +22,3 @@ module Post::Contract
     end
   end
 end
-  

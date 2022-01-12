@@ -1,17 +1,20 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'login#login'
+  root "login#login"
 
-  get '/login', to: 'login#login'
-  post '/login', to: 'login#action_login'
-  get '/logout', to: 'login#logout'
-
+  get "/login", to: "login#login"
+  post "/login", to: "login#action_login"
+  get "/logout", to: "login#logout"
+  get "reset/password", to: "password_resets#new"
+  post "/password/reset", to: "password_resets#create"
+  get "/password/reset/edit", to: "password_resets#edit"
+  patch "/password/reset/edit", to: "password_resets#update"
   # for posts
   resources :posts do
     collection do
-      get :new_post, to: 'posts#new'
-      post :new_post, to: 'posts#create'
+      get :new_post, to: "posts#new"
+      post :new_post, to: "posts#create"
       get :filter
       get :search
       get :upload_csv
@@ -21,26 +24,24 @@ Rails.application.routes.draw do
     end
     member do
       get :edit
-      put :edit, to: 'posts#update'
+      put :edit, to: "posts#update"
     end
   end
 
   # for users
   resources :users do
     collection do
-      get :new_user, to: 'users#new'
-      post :new_user, to: 'users#create'
+      get :new_user, to: "users#new"
+      post :new_user, to: "users#create"
       get :profile
       get :edit_profile
-      put :edit_profile, to: 'users#update_profile'
+      put :edit_profile, to: "users#update_profile"
       get :edit_password
-      put :edit_password, to: 'users#update_password'
+      put :edit_password, to: "users#update_password"
     end
     member do
       get :edit
-      put :edit, to: 'users#update'
-
+      put :edit, to: "users#update"
     end
   end
-
 end
