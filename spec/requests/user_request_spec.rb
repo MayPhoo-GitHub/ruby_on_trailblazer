@@ -13,23 +13,6 @@ RSpec.describe "User", :type => :request do
       birthday: "1998-9-3",
     }
   }
-  # user login
-  describe "User Login" do
-    scenario "invalid login" do
-      post "/login", params: { :user => {
-                       email: "superuser1@gmail.com",
-                       password: "fakepassword",
-                     } }
-      expect(subject).to redirect_to(login_path)
-    end
-    scenario "valid login" do
-      post "/login", params: { :user => {
-                       email: "superuser1@gmail.com",
-                       password: "superuser1@gmail.com1",
-                     } }
-      expect(response.status).to eq(302)
-    end
-  end
   # user index page
   describe "GET /users" do
     scenario "User List" do
