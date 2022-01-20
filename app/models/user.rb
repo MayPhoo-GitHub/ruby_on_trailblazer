@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # adds virtual attributes for authentication
   has_secure_password
   validates :name, presence: true, length: { maximum: 100 }
-  validates :email, presence: true, length: { maximum: 100 },format: { with: Constants::EMAIL_FORMAT }
+  validates :email, presence: true, length: { maximum: 100 }, format: { with: Constants::EMAIL_FORMAT }
   validates :password, presence: true, confirmation: true
   validates :password_confirmation, presence: true
   validates :phone, numericality: true, allow_blank: true, length: { minimum: 10, maximum: 13 }
