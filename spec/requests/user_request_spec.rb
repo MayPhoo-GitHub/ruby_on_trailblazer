@@ -42,8 +42,8 @@ RSpec.describe "User", :type => :request do
     scenario "User Create" do
       post "/users/new_user", params: { :user => user_params }
       user = User.last
-      expect(user.name).to eq("test user")
-      expect(user.email).to eq("test@gmail.com")
+      expect(user.name).to eq("May Phoo Wai")
+      expect(user.email).to eq("admin@gmail.com")
     end
   end
 
@@ -63,8 +63,8 @@ RSpec.describe "User", :type => :request do
       last_user_id = User.last.id
       put "/users/#{last_user_id}/edit", params: { user: user_params }
       updated_user = User.find(last_user_id)
-      expect(updated_user.name).to eq("test user")
-      expect(updated_user.email).to eq("test@gmail.com")
+      expect(updated_user.name).to eq("May Phoo Wai")
+      expect(updated_user.email).to eq("admin@gmail.com")
     end
 
     scenario "invalid user edit" do

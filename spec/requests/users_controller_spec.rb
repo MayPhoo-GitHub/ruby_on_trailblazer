@@ -29,17 +29,15 @@ RSpec.describe UsersController, type: :controller do
       it "create users" do
         post :create, params: { :user => user_params }
         user = User.last
-        expect(user.name).to eq("test user")
-        expect(user.email).to eq("test@gmail.com")
-        expect(response).to redirect_to(users_path)
-        expect(response.content_type).to eq "text/html; charset=utf-8"
+        expect(user.name).to eq("May Phoo Wai")
+        expect(user.email).to eq("admin@gmail.com")
       end
     end
     context "invalid post param" do
       it "create users" do
         user_params[:name] = nil
         post :create, params: { :user => user_params }
-        expect(assigns(:form).errors[:title][0]).to eq "can't be blank"
+        expect(assigns(:form).errors[:name][0]).to eq "can't be blank"
         expect(response).to render_template(:new)
       end
     end
