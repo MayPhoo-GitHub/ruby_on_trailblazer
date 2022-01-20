@@ -55,33 +55,33 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  #   # function :update
-  #   describe "PUT posts#update" do
-  #     context "valid post param" do
-  #       it "update post" do
-  #         last_post = Post.last
-  #         put :update, params: { :post => post_params, :id => last_post.id }
-  #         expect(assigns(:model).title).to eq "lorem test2"
-  #       end
-  #     end
-  #     context "invalid post param" do
-  #       it "update post" do
-  #         last_post = Post.last
-  #         post_params[:title] = nil
-  #         put :update, params: { :post => post_params, :id => last_post.id }
-  #         expect(assigns(:form).errors[:title][0]).to eq "can't be blank"
-  #         expect(response).to render_template(:edit)
-  #       end
-  #     end
-  #   end
+  # function :update
+  describe "PUT posts#update" do
+    context "valid post param" do
+      it "update post" do
+        last_user = User.last
+        put :update, params: { :user => user_params, :id => last_user.id }
+        expect(assigns(:model).name).to eq "May Phoo Wai"
+      end
+    end
+    context "invalid post param" do
+      it "update post" do
+        last_user = User.last
+        user_params[:name] = nil
+        put :update, params: { :user => user_params, :id => last_user.id }
+        expect(assigns(:form).errors[:name][0]).to eq "can't be blank"
+        expect(response).to render_template(:edit)
+      end
+    end
+  end
 
-  #   # function :destroy
-  #   describe "DELETE posts#destroy" do
-  #     it "delete post" do
-  #       post = Post.create! post_params
-  #       expect {
-  #         delete :destroy, params: { :id => post.id }
-  #       }.to change(Post, :count).by(-1)
-  #     end
-  #   end
+  # function :destroy
+  describe "DELETE posts#destroy" do
+    it "delete post" do
+      user = User.create! user_params
+      expect {
+        delete :destroy, params: { :id => user.id }
+      }.to change(User, :count).by(-1)
+    end
+  end
 end
