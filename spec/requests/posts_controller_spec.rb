@@ -98,6 +98,21 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  # function :search
+  describe "GET post#search" do
+    it "valid search" do
+      get :search, params: { search_keyword: "lorem" }
+      expect(response.status).to eq(200)
+      expect(response).to render_template(:index)
+    end
+    it "invalid search" do
+      get :search, params: { search_keyword: "mayphoo" }
+
+      expect(response.body).to eq("")
+      expect(response).to render_template(:index)
+    end
+  end
+
   # function :export
   describe "GET posts#export" do
     it "export post list csv" do
@@ -107,50 +122,17 @@ RSpec.describe PostsController, type: :controller do
       expect(response.body).to include("lorem test2")
     end
   end
-  # function :action_import
+  # function :import
   describe "POST posts#action_import" do
     it "import valid csv file from temp folder" do
-      initial_post_count = Post.count
       post :import_csv, params: { :file => fixture_file_upload("#{Rails.root}/tmp/rspec/test.csv", "text/csv") }
       post = Post.last
-      final_post_count = Post.count
       expect(post.title).to eq("lorem test2")
       expect(post.description).to eq("lorem test lorem test")
     end
 
     it "import invalid csv file from temp folder" do
       post :import_csv, params: { :file => fixture_file_upload("#{Rails.root}/tmp/rspec/error.csv", "text/csv") }
-      expect(assigns(:form).errors[:file][0]).to eq "The header is wrong! Please dowload csv_format first"
-    end
-  end
-
-  describe "POST posts#action_import" do
-    it "create valid temp csv file and use it to test action_import" do
-      csv_rows = <<~EOS
-        title,description,public_flag
-        csv test title1, csv test description1, 1
-        csv test title2, csv test description2, 0
-        csv test title3, csv test description3, 1
-      EOS
-      file = Tempfile.new("post_list.csv")
-      file.write(csv_rows)
-      file.rewind
-      expect {
-        post :import_csv, params: { :file => Rack::Test::UploadedFile.new(file, "text/csv") }
-      }.to change(Post, :count).by(3)
-    end
-
-    it "create invalid temp csv file and use it to test action_import" do
-      csv_rows = <<~EOS
-        title,description
-        csv test title1, csv test description1, 1
-        csv test title2, csv test description2, 0
-        csv test title3, csv test description3, 1
-      EOS
-      file = Tempfile.new("post_list.csv")
-      file.write(csv_rows)
-      file.rewind
-      post :import_csv, params: { :file => Rack::Test::UploadedFile.new(file, "text/csv") }
       expect(assigns(:form).errors[:file][0]).to eq "The header is wrong! Please dowload csv_format first"
     end
   end

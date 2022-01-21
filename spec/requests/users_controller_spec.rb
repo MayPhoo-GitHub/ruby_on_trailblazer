@@ -84,4 +84,25 @@ RSpec.describe UsersController, type: :controller do
       }.to change(User, :count).by(-1)
     end
   end
+  # change password
+  describe "Change Password" do
+    scenario "invalid update" do
+      last_user_id = User.last.id
+      user_params[:email] = "test@gmail.com"
+      put :edit_password, params: { :user => {
+                            password: "rtesting",
+                            password_confirmation: "rtesting",
+                          } }
+      user = User.last
+      expect(user.password_confirmation).not_to eq("rtesting")
+      expect(response).to render_template(:edit_password)
+    end
+    scenario "valid update" do
+      put :edit_password, params: { :user => {
+                            password: "rtesting",
+                            password_confirmation: "rtesting",
+                          } }
+      expect(response).to render_template(:edit_password)
+    end
+  end
 end
