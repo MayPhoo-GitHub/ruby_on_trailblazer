@@ -3,7 +3,7 @@
 class User < ApplicationRecord
   has_many :posts, :foreign_key => :created_user_id, :primary_key => :id, :dependent => :delete_all
   # uncomment for RSpec testing
-  # has_secure_password
+   has_secure_password
   # validates :name, presence: true, length: { maximum: 100 }
   # validates :email, presence: true, length: { maximum: 100 }, format: { with: Constants::EMAIL_FORMAT }
   # validates :password, presence: true, confirmation: true
