@@ -10,7 +10,7 @@ RSpec.describe "Post", :type => :request do
     }
   }
   # post index
-  describe "GET /posts" do
+  describe "/posts" do
     scenario "get post list" do
       get "/posts"
       expect(response.status).to eq(200)
@@ -19,7 +19,7 @@ RSpec.describe "Post", :type => :request do
   end
 
   # post create
-  describe "POST /posts/new_post" do
+  describe "/posts/new_post" do
     scenario "post create" do
       post "/posts/new_post", params: { :post => post_params }
       post = Post.last
@@ -28,7 +28,7 @@ RSpec.describe "Post", :type => :request do
     end
   end
   # post detail
-  describe "GET /posts/show" do
+  describe "/posts/show" do
     scenario "post detail" do
       post = Post.create(post_params)
       get post_path(post)
@@ -37,7 +37,7 @@ RSpec.describe "Post", :type => :request do
     end
   end
   # post update
-  describe "PUT posts/edit" do
+  describe "posts/edit" do
     scenario "valid post update" do
       last_post_id = Post.last.id
       put "/posts/#{last_post_id}/edit", params: { post: post_params }
@@ -56,7 +56,7 @@ RSpec.describe "Post", :type => :request do
     end
   end
   # post delete
-  describe "DELETE posts/:id" do
+  describe "posts/:id" do
     scenario "delete post" do
       post = Post.create! post_params
       expect {

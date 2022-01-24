@@ -12,7 +12,7 @@ RSpec.describe PostsController, type: :controller do
     }
   }
   # function :index
-  describe "GET posts#index" do
+  describe "posts#index" do
     it "get all posts" do
       get :index
       expect(response.status).to eq(200)
@@ -21,7 +21,7 @@ RSpec.describe PostsController, type: :controller do
   end
 
   # function :create
-  describe "POST posts#create" do
+  describe "posts#create" do
     context "valid post param" do
       it "create posts" do
         post :create, params: { :post => post_params }
@@ -55,15 +55,15 @@ RSpec.describe PostsController, type: :controller do
   end
 
   # function :update
-  describe "PUT posts#update" do
-    context "valid post param" do
+  describe "posts#update" do
+    context "valid post update" do
       it "update post" do
         last_post = Post.last
         put :update, params: { :post => post_params, :id => last_post.id }
         expect(assigns(:model).title).to eq "lorem test2"
       end
     end
-    context "invalid post param" do
+    context "invalid post update" do
       it "update post" do
         last_post = Post.last
         post_params[:title] = nil
@@ -75,7 +75,7 @@ RSpec.describe PostsController, type: :controller do
   end
 
   # function :destroy
-  describe "DELETE posts#destroy" do
+  describe "posts#destroy" do
     it "delete post" do
       post = Post.create! post_params
       expect {
@@ -85,7 +85,7 @@ RSpec.describe PostsController, type: :controller do
   end
 
   # function :filter
-  describe "GET post#filter" do
+  describe "post#filter" do
     it "get all posts" do
       get :index
       expect(response.status).to eq(200)
@@ -99,7 +99,7 @@ RSpec.describe PostsController, type: :controller do
   end
 
   # function :search
-  describe "GET post#search" do
+  describe "post#search" do
     it "valid search" do
       get :search, params: { search_keyword: "lorem" }
       expect(response.status).to eq(200)
@@ -114,7 +114,7 @@ RSpec.describe PostsController, type: :controller do
   end
 
   # function :export
-  describe "GET posts#export" do
+  describe "posts#export" do
     it "export post list csv" do
       Post.create! post_params
       get :download_csv, format: :csv
@@ -123,15 +123,15 @@ RSpec.describe PostsController, type: :controller do
     end
   end
   # function :import
-  describe "POST posts#action_import" do
-    it "import valid csv file from temp folder" do
+  describe "posts#import" do
+    it "import valid csv file" do
       post :import_csv, params: { :file => fixture_file_upload("#{Rails.root}/tmp/rspec/test.csv", "text/csv") }
       post = Post.last
       expect(post.title).to eq("lorem test2")
       expect(post.description).to eq("lorem test lorem test")
     end
 
-    it "import invalid csv file from temp folder" do
+    it "import invalid csv file" do
       post :import_csv, params: { :file => fixture_file_upload("#{Rails.root}/tmp/rspec/error.csv", "text/csv") }
       expect(assigns(:form).errors[:file][0]).to eq "The header is wrong! Please dowload csv_format first"
     end

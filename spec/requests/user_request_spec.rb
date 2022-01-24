@@ -14,7 +14,7 @@ RSpec.describe "User", :type => :request do
     }
   }
   # user login
-  describe "User Login" do
+  describe "Login" do
     scenario "invalid login" do
       post "/login", params: { :user => {
                        email: "test@gmail.com",
@@ -31,14 +31,14 @@ RSpec.describe "User", :type => :request do
     end
   end
   # user index page
-  describe "GET /users" do
+  describe "/users" do
     scenario "User List" do
       get "/users"
       expect(response.status).to eq(200)
     end
   end
   # user create
-  describe "POST users/new_user" do
+  describe "users/new_user" do
     scenario "User Create" do
       post "/users/new_user", params: { :user => user_params }
       user = User.last

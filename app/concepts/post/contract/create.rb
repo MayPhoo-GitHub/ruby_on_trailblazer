@@ -6,8 +6,8 @@ module Post::Contract
       property :created_user_id
       property :updated_user_id
   
-      validates  :title, presence: true, length: { minimum: 10 }
-      validates  :description, presence: true, length: { minimum: 20 }
+      validates  :title, presence: true, length: { minimum: 10 ,maximum: 50 }
+      validates  :description, presence: true, length: { minimum: 20, maximum: 255 }
       validates  :public_flag, presence: true
     end
   end

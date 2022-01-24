@@ -15,7 +15,7 @@ RSpec.describe UsersController, type: :controller do
     }
   }
   # function :index
-  describe "GET users#index" do
+  describe "users#index" do
     it "get all users" do
       get :index
       expect(response.status).to eq(200)
@@ -24,7 +24,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   # function :create
-  describe "User users#create" do
+  describe "users#create" do
     context "valid user param" do
       it "create users" do
         post :create, params: { :user => user_params }
@@ -44,7 +44,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   # function :show
-  describe "GET users#show" do
+  describe "users#show" do
     it "show user detail" do
       last_user = User.last
       get :show, params: { :id => last_user.id }
@@ -56,7 +56,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   # function :update
-  describe "PUT posts#update" do
+  describe "posts#update" do
     context "valid post param" do
       it "update post" do
         last_user = User.last
@@ -76,7 +76,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   # function :destroy
-  describe "DELETE posts#destroy" do
+  describe "posts#destroy" do
     it "delete post" do
       user = User.create! user_params
       expect {

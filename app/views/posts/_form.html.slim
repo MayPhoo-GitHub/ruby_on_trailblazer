@@ -6,7 +6,7 @@
       .error-msg This  #{ post.errors[:title][0] }
   .form-group
     label.required Description
-    = f.text_area :description, class: "form-control", rows: 6
+    = f.text_area :description, class: "form-control", rows: 6, id: "summernote"
     - if post.errors[:description].any?
       .error-msg This  #{ post.errors[:description][0] }
   .form-group
@@ -21,3 +21,18 @@
           .error-msg This  #{ post.errors[:public_flag][0] }
   = f.submit class: "btn-submit"
   = link_to "Cancel", back, class:"btn-delete"
+javascript:
+  $('#summernote').summernote({
+          placeholder: 'Write something awesome here',
+          tabsize: 2,
+          height: 300,
+          toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+          ]
+        });

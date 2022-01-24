@@ -45,7 +45,7 @@ body
             = post.user.name
             | ] 
         .content
-          = truncate(post.description.html_safe, length:50)
+          = truncate(simple_format(post.description), escape: false, length: 50)
           br
           = link_to "Show More >>", post_path(post), class: "show-more"
       br
