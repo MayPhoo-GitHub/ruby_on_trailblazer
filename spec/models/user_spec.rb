@@ -37,34 +37,34 @@ RSpec.describe User, type: :model do
   # it "should save successfully" do
   #   expect(subject).to be_valid
   # end
-  # it "is not valid. Name is too long." do
-  #   subject.name = 'a' * 101
+  # it "Name is too long." do
+  #   subject.name = 'a' * 200
   #   expect(subject).to_not be_valid
   # end
   # it "is not valid. Wrong email format" do
   #   subject.email = "wrongemail"
   #   expect(subject).to_not be_valid
   # end
-  # it "is not valid. Password doesn't match password confirmation" do
+  # it "Password doesn't match password confirmation" do
   #   subject.password = "password"
   #   expect(subject).to_not be_valid
   # end
-  # it "is not valid. Phone must be numeric" do
+  # it "Phone must be numeric" do
   #   subject.phone = 'phone_text'
   #   expect(subject).to_not be_valid
   # end
 
-  # it "is not valid. Phone is too short" do
+  # it "Phone is too short" do
   #   subject.phone = "0999999"
   #   expect(subject).to_not be_valid
   # end
 
-  # it "is not valid. Phone is too long" do
+  # it "Phone is too long" do
   #   subject.phone = "09999999999999"
   #   expect(subject).to_not be_valid
   # end
 
-  # it "is not valid. Address is too long" do
+  # it "Address is too long" do
   #   subject.address = "a" * 256
   #   expect(subject).to_not be_valid
   # end
